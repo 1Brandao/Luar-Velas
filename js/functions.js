@@ -15,9 +15,15 @@ function link(link) {
 }
 
 function getBuy(link, e) {
-    console.log(link, e)
-    let doc = document.getElementById(e)
+    let doc = document.getElementById(e);
     if (doc) {
-        window.location.href = link.replace("$quantidade", doc.value)
+        let quantity = parseInt(doc.value);
+        
+        if (quantity < 1) {
+            alert("A quantidade não pode ser negativa ou zero.");
+            return;
+        }
+        
+        window.location.href = link.replace("$quantidade", quantity);
     }
 }
