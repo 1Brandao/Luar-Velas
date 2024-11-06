@@ -27,7 +27,7 @@ function renderProdutos(produtos) {
         const produtoHTML = `
             <div class="col-4">
                 <a href="produto.html">
-                    <img src="${produtos.foto || './images/default-user.png'}" alt="Foto de ${produtos.nome || 'Usuário'}">
+                    <img src="${produtos.fotoprincipal || './images/default-user.png'}" alt="Foto de ${produtos.nome || 'Usuário'}">
                 </a>
                 <h4>${produtos.nome || 'Produto não disponível'}</h4>
                 <div class="rating">
