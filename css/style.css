@@ -351,6 +351,13 @@ select:focus {
     color: #fff;
 }
 
+/*-------------------- Sobre -----------------------*/
+
+#marketingOlfativo small,
+#SobreNos small {
+    overflow-wrap: break-word;
+}
+ 
 /*---------------- Detalhes de um produto ----------------*/
 
 
