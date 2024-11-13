@@ -1,5 +1,5 @@
 async function fetchProduto() {
-    const queryURL = "https://829cdhmq.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%27produto%27%5D+%7B%0A++nome%2C%0A++preco%2C%0A++nota%2C%0A++%22foto%22%3A+foto.asset-%3Eurl%0A%7D"
+    const queryURL = "https://829cdhmq.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%27produtos%27+%26%26+defined%28fotoprincipal.asset%29%5D+%7B%0A++nome%2C%0A++preco%2C%0A++descricao%2C%0A++%22foto%22%3A+fotoprincipal.asset-%3Eurl%2C%0A++%22foto1%22%3A+foto1.asset-%3Eurl%2C%0A++%22foto2%22%3A+foto2.asset-%3Eurl%2C%0A++%22foto3%22%3A+foto3.asset-%3Eurl%2C%0A++%22foto4%22%3A+foto4.asset-%3Eurl%0A%7D"
 
     try {
         const response = await fetch(queryURL);
@@ -20,15 +20,14 @@ async function fetchProduto() {
 
 
 function renderProduto(produto) {
-    const container = document.getElementById('product');
+    const container = document.getElementById('single-product');
     container.innerHTML = '';
 
     produto.forEach(produto => {
         const produtoHTML = `
-        <div class="small-container single-product">
         <div class="row flex justify-center items-center sc-1120:flex-col">
             <div class="col-2">
-                <img src=${produto.fotoprincipal || './images/default-user.png'} id="productImg" alt="Foto de ${produto.nome || 'Usuário'}>
+                <img src=${produto.foto || './images/default-user.png'} id="productImg" alt="Foto de ${produto.nome || 'Usuário'}>
 
                 <div class="small-img-row mt-[10px]">
                     <div class="small-img-col">

@@ -1,11 +1,10 @@
 const myApiUrl = "https://829cdhmq.api.sanity.io/v2022-03-07/data/query/production?query=*%5B_type+%3D%3D+%27novalinha%27+%26%26+defined%28Imagem.asset%29%5D+%7B%0A++nome%2C%0A++++desc%2C%0A++%22foto%22%3A+Imagem.asset-%3Eurl%0A%7D";
 
 async function fetchProductData() {
-    console.log("Função fetchProductData chamada."); // Log para verificar chamada
+    console.log("Função fetchProductData chamada.");
     try {
         const response = await fetch(myApiUrl);
         
-        // Verifique se a resposta está OK
         if (!response.ok) {
             throw new Error(`Erro na requisição: ${response.status}`);
         }
@@ -32,5 +31,4 @@ async function fetchProductData() {
     }
 }
 
-// Chama a função quando a página carrega
 window.onload = fetchProductData;
