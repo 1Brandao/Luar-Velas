@@ -24,49 +24,48 @@ function renderProduto(produto) {
     container.innerHTML = '';
 
     produto.forEach(produto => {
-        const produtoHTML = `
-        <div class="row flex justify-center items-center sc-1120:flex-col">
-            <div class="col-2">
-                <img src=${produto.foto || './images/default-user.png'} id="productImg" alt="Foto de ${produto.nome || 'Usuário'}>
+        const produtoHTML = `<div class="row flex justify-center items-center sc-1120:flex-col">
+                    <div class="col-2">
+                        <img src="${produto.foto}" width="100%" id="productImg">
 
-                <div class="small-img-row mt-[10px]">
-                    <div class="small-img-col">
-                        <img src=${produto.foto1 || './images/default-user.png'} alt="Foto de ${produto.nome || 'Usuário'} width="100%" class="small-img">
+                        <div class="small-img-row mt-[10px]">
+                            <div class="small-img-col">
+                                <img src="${produto.foto1}" width="100%" class="small-img !h-[114px]">
+                            </div>
+                            <div class="small-img-col">
+                                <img src="${produto.foto2}" width="100%" class="small-img !h-[114px]">
+                            </div>
+                            <div class="small-img-col">
+                                <img src="${produto.foto3}" width="100%" class="small-img !h-[114px]">
+                            </div>
+                            <div class="small-img-col">
+                                <img src="${produto.foto4}" width="100%" class="small-img !h-[114px]">
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="small-img-col">
-                        <img src=${produto.foto2 || './images/default-user.png'} alt="Foto de ${produto.nome || 'Usuário'} width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src=${produto.foto3 || './images/default-user.png'} alt="Foto de ${produto.nome || 'Usuário'} width="100%" class="small-img">
-                    </div>
-                    <div class="small-img-col">
-                        <img src=${produto.foto4 || './images/default-user.png'} alt="Foto de ${produto.nome || 'Usuário'} width="100%" class="small-img">
+                    <div class="col-2">
+                        <p>Início / Velas</p>
+                        <h1>${produto.nome}</h1>
+                        <h4>${produto.preco}</h4>
+                        <select>
+                            <option>Cor (recipiente)</option>
+                            <option>Branca</option>
+                            <option>Preta</option>
+                            <option>Rosa</option>
+                            <option>Azul</option>
+                            <option>Cinza</option>
+                        </select>
+                        <input id="quantidade_produtos" type="number" value="1">
+                        <button
+                            onclick="getBuy('https://api.whatsapp.com/send/?phone=5545920013524&text=Olá, gostaria de comprar $quantidade quantidade da vela Aroma Desjardins.&type=phone_number&app_absent=0', 'quantidade_produtos')"
+                            class="btn !text-white">Comprar agora</button>
+                        <h3>Detalhes do Produto <i class="fa !text-[#89A992] fa-indent"></i></h3>
+                        <br>
+                        <p class="text-[gray]">${produto.descricao}</p>
                     </div>
                 </div>
-
-            </div>
-            <div class="col-2">
-                <p>Início / Velas</p>
-                <h1>${produto.nome || 'Produto não disponível'}</h1>
-                <h4>${produto.preco || 'Produto não disponível'}</h4>
-                <select>
-                    <option>Cor (recipiente)</option>
-                    <option>Branca</option>
-                    <option>Preta</option>
-                    <option>Rosa</option>
-                    <option>Azul</option>
-                    <option>Cinza</option>
-                </select>
-                <input id="quantidade_produtos" type="number" value="1">
-                <button
-                    onclick="getBuy('https://api.whatsapp.com/send/?phone=5545920013524&text=Olá, gostaria de comprar $quantidade quantidade da vela Aroma Desjardins.&type=phone_number&app_absent=0', 'quantidade_produtos')"
-                    class="btn !text-white">Comprar agora</button>
-                <h3>Detalhes do Produto <i class="fa !text-[#89A992] fa-indent"></i></h3>
-                <br>
-                <p class="text-[gray]">${produto.descricao || 'Produto não disponível'}</p>
-            </div>
-        </div>
-    </div>   
+            </div>  
     `;
 
          container.innerHTML += produtoHTML;
