@@ -15,20 +15,24 @@ async function fetchOlfativo() {
 }
 
 function renderOlfativo(olfativo) {
-    const colElements = document.querySelectorAll('.col-2'); 
-    const descricaoElement = colElements[4].querySelector('small'); 
-    const tituloElement = colElements[4].querySelector('h1'); 
-
-    descricaoElement.innerHTML = '';
-    tituloElement.innerHTML = '';
+    const colElements = document.getElementById('marketingOlfativo');
+    
+    colElements.innerHTML = '';
 
     olfativo.forEach(item => {
-        descricaoElement.innerHTML += `<p>${item.descricao}</p>`;
-        tituloElement.innerHTML += `${item.titulo} - `;
+        const olfativoHTML = `
+                    <div class="col-2" id="marketingOlfativo">
+                        <p>O que fazemos?</p>
+                        <h1 class="sc-420:!text-[27px]">${item.titulo}</h1>
+                        <small>
+                            ${item.descricao}
+                        </small><br>
+                        <a onclick="link('https://api.whatsapp.com/send/?phone=5545920013524&text=Olá, gostaria de saber mais sobre as velas da Luar.&type=phone_number&app_absent=0')"
+                            class="btn cursor-pointer hover:!text-[white]">Entre em contato! &#8594;</a>
+                    </div>
+        `;
+        colElements.innerHTML += olfativoHTML;
     });
-
-    tituloElement.innerHTML = tituloElement.innerHTML.slice(0, -3); 
 }
 
 fetchOlfativo();
-
